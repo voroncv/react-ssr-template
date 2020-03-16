@@ -1,0 +1,38 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env", {
+        "modules": false,
+        "useBuiltIns": "usage"
+      }
+    ],
+    "@babel/preset-react",
+    "jest"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-optional-chaining",
+    [
+      "babel-plugin-styled-components", {
+        "ssr": true,
+        "displayName": false,
+        "fileName": false,
+        "transpileTemplateLiterals": false,
+        "minify": false
+      }
+    ],
+    ["@babel/plugin-transform-runtime"],
+    ["file-loader", {
+      "extensions": ["png", "jpg", "jpeg", "gif", "svg"],
+      "publicPath": "/dist/static",
+      "outputPath": "/dist/static",
+      "context": "/src"
+    }]
+  ],
+  "env": {
+    "test": {
+        "presets": ["@babel/preset-react"],
+        "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    }
+}
+}
